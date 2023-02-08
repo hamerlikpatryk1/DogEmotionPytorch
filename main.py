@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 from random import sample
 
+
 class CustomDataset(Dataset):
     def __init__(self):
         self.imgs_path = "images/"
@@ -36,9 +37,10 @@ class CustomDataset(Dataset):
         class_id = torch.tensor([class_id])
         return img_tensor.float(), class_id.float()
 
-   # def append_my_list(self, drawn_list, my_list):
-   #     drawn_list.append(np.random.permutation(my_list)[:10])
-   #     return drawn_list
+
+# def append_my_list(self, drawn_list, my_list):
+#     drawn_list.append(np.random.permutation(my_list)[:10])
+#     return drawn_list
 
 def main():
     dataset = CustomDataset()
@@ -74,7 +76,7 @@ def main():
             relaxed_list.append(photo)
         if photo[1] == "sad":
             sad_list.append(photo)
-    #print(angry_list)
+    # print(angry_list)
 
     # print(dataset.data) structure [[][][][][]...]
     drawn_photos = []
@@ -87,25 +89,22 @@ def main():
     print(drawn_photos[0][0])
     img = mpimg.imread(drawn_photos[0][0])
 
-
     fig, ax = plt.subplots(nrows=4, ncols=10)
     ax[0, 0].imshow(img)
-    #ax[0, 0].imshow(drawn_photos[0])
-    #for ax.set_title(str())
+    # ax[0, 0].imshow(drawn_photos[0])
+    # for ax.set_title(str())
 
     plt.tight_layout()
     plt.show()
 
-    #print(drawn_photos)  # can also use choice function
-    #links_list = []
+    # print(drawn_photos)  # can also use choice function
+    # links_list = []
     ##label_list = []
-    #for photo in dataset.data[]:
+    # for photo in dataset.data[]:
 
-
-      #  links_list.append(photo[0])  # links
-       # label_list.append(photo[1])  # labels
-    #print("links= ", links_list, " labels= ", label_list)  # lists are ordered
-
+    #  links_list.append(photo[0])  # links
+    # label_list.append(photo[1])  # labels
+    # print("links= ", links_list, " labels= ", label_list)  # lists are ordered
 
 
 if __name__ == "__main__":
