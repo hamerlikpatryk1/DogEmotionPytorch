@@ -76,9 +76,7 @@ def main():
             relaxed_list.append(photo)
         if photo[1] == "sad":
             sad_list.append(photo)
-    # print(angry_list)
 
-    # print(dataset.data) structure [[][][][][]...]
     drawn_photos = []
     drawn_photos.extend(sample(angry_list, 10))
     drawn_photos.extend(sample(happy_list, 10))
@@ -87,6 +85,8 @@ def main():
 
     print(drawn_photos)
     print(drawn_photos[0][0])
+
+    # for photo in dataset.data[]:
     img = mpimg.imread(drawn_photos[0][0])
 
     fig, ax = plt.subplots(nrows=4, ncols=10)
@@ -97,16 +97,6 @@ def main():
     plt.tight_layout()
     plt.show()
 
-    # print(drawn_photos)  # can also use choice function
-    # links_list = []
-    ##label_list = []
-    # for photo in dataset.data[]:
-
-    #  links_list.append(photo[0])  # links
-    # label_list.append(photo[1])  # labels
-    # print("links= ", links_list, " labels= ", label_list)  # lists are ordered
-    #GIT TEST
-    #GIT TEST
 
 if __name__ == "__main__":
     main()
