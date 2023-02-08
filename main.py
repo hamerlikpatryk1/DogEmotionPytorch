@@ -105,7 +105,8 @@ def main():
     #  links_list.append(photo[0])  # links
     # label_list.append(photo[1])  # labels
     # print("links= ", links_list, " labels= ", label_list)  # lists are ordered
-
+    #GIT TEST
+    #GIT TEST
 
 if __name__ == "__main__":
     main()
