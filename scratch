@@ -1,6 +1,0 @@
-x10 [['','happy']]
-x10 [['','angry']]
-x10 [['','relaxed']]
-x10 [['','sad']]
-
-[all_records[all_angry_records[image_address, label][all_happy_records[image_address, label][all_relaxed_records[image_address, label][all_sad_records[image_address, label]]]
