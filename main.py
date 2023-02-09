@@ -87,10 +87,16 @@ def main():
     print(drawn_photos[0][0])
 
     # for photo in dataset.data[]:
-    img = mpimg.imread(drawn_photos[0][0])
+    # img = mpimg.imread(drawn_photos[0][0])
+    i = 0
+    rows = len(label_counters)
+    columns = (int(len(drawn_photos) / rows))
+    fig, ax = plt.subplots(nrows=rows, ncols=columns)
+    for row in range(rows):
+        for col in range(columns):
+            ax[row, col].imshow(mpimg.imread(drawn_photos[i][0]))
+            i += 1
 
-    fig, ax = plt.subplots(nrows=4, ncols=10)
-    ax[0, 0].imshow(img)
     # ax[0, 0].imshow(drawn_photos[0])
     # for ax.set_title(str())
 
