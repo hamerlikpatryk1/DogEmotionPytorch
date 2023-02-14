@@ -45,10 +45,6 @@ class CustomDataset(Dataset):
 def main():
     dataset = CustomDataset()
     data_loader = DataLoader(dataset, batch_size=4, shuffle=True)
-    # for imgs, labels in data_loader:
-    #   print("Batch of images has shape: ", imgs.shape)
-    #   print("Batch of labels has shape: ", labels.shape)
-    # return
     print("done")
     label_counters = {"angry": 0, "happy": 0, "relaxed": 0, "sad": 0}
     for label in dataset.class_map.keys():
@@ -62,20 +58,10 @@ def main():
         class_counts[label] = sum([1 if record[1] == label else 0 for record in dataset.data])
     print(class_counts)
 
-    angry_list = []
-    happy_list = []
-    relaxed_list = []
-    sad_list = []
-
-    for photo in dataset.data:
-        if photo[1] == "angry":
-            angry_list.append(photo)
-        if photo[1] == "happy":
-            happy_list.append(photo)
-        if photo[1] == "relaxed":
-            relaxed_list.append(photo)
-        if photo[1] == "sad":
-            sad_list.append(photo)
+    angry_list = [photo for photo in dataset.data if photo[1] == "angry"]
+    happy_list = [photo for photo in dataset.data if photo[1] == "happy"]
+    relaxed_list = [photo for photo in dataset.data if photo[1] == "relaxed"]
+    sad_list = [photo for photo in dataset.data if photo[1] == "sad"]
 
     drawn_photos = []
     drawn_photos.extend(sample(angry_list, 10))
@@ -95,12 +81,13 @@ def main():
     for row in range(rows):
         for col in range(columns):
             ax[row, col].imshow(mpimg.imread(drawn_photos[i][0]))
+            ax[row, col].set_xlabel(drawn_photos[i][1])
             i += 1
 
     # ax[0, 0].imshow(drawn_photos[0])
     # for ax.set_title(str())
 
-    plt.tight_layout()
+    plt.subplot_tool()
     plt.show()
 
 
