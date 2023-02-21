@@ -11,7 +11,7 @@ from random import sample
 
 
 class CustomDataset(Dataset):
-    def __init__(self):
+    def __init__(self, transform=None, target_transform=None):
         self.imgs_path = "images/"
         file_list = glob.glob(self.imgs_path + "*")
         # print(file_list)
@@ -23,6 +23,8 @@ class CustomDataset(Dataset):
         # print(self.data)
         self.class_map = {"angry": 0, "happy": 1, "relaxed": 2, "sad": 3}
         self.img_dim = (384, 384)
+        self.transform = transform
+        self.target_transform = target_transform
 
     def __len__(self):
         return len(self.data)
@@ -35,6 +37,10 @@ class CustomDataset(Dataset):
         img_tensor = torch.from_numpy(img)
         img_tensor = img_tensor.permute(2, 0, 1)
         class_id = torch.tensor([class_id])
+        if self.transform:
+            image = self.transform(img_tensor)
+        if self.target_transform:
+            label = self.target_transform(class_id)
         return img_tensor.float(), class_id.float()
 
 
